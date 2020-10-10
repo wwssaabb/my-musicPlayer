@@ -1,3 +1,3 @@
 module.exports={
-  publicPath:"/my-musicPlayer/"
+  publicPath:"/my-musicplayer/"
 }
