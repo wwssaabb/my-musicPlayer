@@ -60,7 +60,6 @@
     methods: {
       getSearchData(keyword,type,page){
         getSearchData(keyword,type,page).then(res=>{
-          console.log(res)
           let type=this.searchParams.type
           switch (type) {
             case 1:
@@ -79,13 +78,10 @@
         })
       },
       changeLabel(label){
-        console.log(label)
         this.isChoose=label
         this.searchParams.type=label==='歌曲'?1:label==='歌单'?1000:1004
-        console.log(this.searchParams.type)
       },
       changePage(obj){
-        console.log(obj)
         this.searchParams.page=obj.page
       }
     },
@@ -95,8 +91,6 @@
       },
       searchParams:{
         handler(){
-          console.log('searchParams change')
-          console.log(this.searchParams)
           let params=this.searchParams
           this.getSearchData(params.keywords,params.type,params.page)
         },
@@ -115,7 +109,11 @@
         let type=this.searchParams.type
         return type===1?this.songs:type===1000?this.songList:this.mvs
       }
-    }
+    },
+    created() {
+      this.getSearchData(this.keyword,1,1)
+      this.searchParams.keywords=this.keyword
+    },
   }
 </script>
 

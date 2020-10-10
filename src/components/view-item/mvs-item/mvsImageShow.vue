@@ -3,7 +3,7 @@
     <div class="mvs-main">
       <div class="mvs-content-item" v-for="item in mvs" :key="item.id">
         <div class="mvs-image-compose">
-          <Icon type="md-arrow-dropright-circle" class="mvs-player-icon" size="40" color="#dc143c" @click="playMv(item.id)"/>
+          <Icon type="md-arrow-dropright-circle" class="mvs-player-icon" size="40" color="#dc143c" @click="playMv(item.id,item.artistId)"/>
           <div class="mvs-icon-compose">
             <Icon type="md-arrow-dropright" size="28" color="#fff"/>
             <span class="mvs-play-count">{{item.playCount}}</span>
@@ -31,8 +31,9 @@
       }
     },
     methods:{
-      playMv(id){
-        this.$bus.$emit('playMv', id)
+      playMv(id,artId){
+        console.log(artId)
+        this.$bus.$emit('playMv', id,artId)
       }
     }
   }
@@ -41,14 +42,16 @@
 <style scoped>
   .mvs-wrap {
     width: 100%;
-    height: auto;
+    height: calc(100vh - 314px);
+    overflow: auto;
     border: 2px solid #e8eaec;
   }
 
   .mvs-main {
     width: 100%;
     padding: 20px 20px;
-    height: auto;
+    height: 100%;
+    overflow: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

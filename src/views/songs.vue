@@ -40,7 +40,6 @@
     getNewSongsData(type){
       getNewSongsData(type).then(res=>{
         this.showList=res.data.data
-        console.log(this.showList)
       })
     },
     changeLabel(newObj){

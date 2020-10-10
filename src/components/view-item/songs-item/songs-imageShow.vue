@@ -12,14 +12,14 @@
         <td class="songs-table-td1">
           <p class="songs-item-index">{{index+1}}</p>
           <div class="songs-image-compose">
-            <img class="songs-image" :src="item.album.picUrl" alt="">
+            <img class="songs-image" v-lazy="item.album.picUrl" alt="">
             <Icon class="songs-play-icon" type="md-arrow-dropright-circle" size="30" color="#c22727"
                   @click="playMusic(item.id)"/>
           </div>
         </td>
         <td class="songs-table-td2">
           <span class="songs-song-name">{{item.name}}</span>
-          <Icon class="songs-mv-icon" v-if="item.mvid!==0" type="logo-youtube" size="20" color="#c22727" @click="playMv(item.mvid)"/>
+          <Icon class="songs-mv-icon" v-if="item.mvid!==0" type="logo-youtube" size="20" color="#c22727" @click="playMv(item.mvid,item.artists[0].id)"/>
         </td>
         <td class="songs-table-td3">
           <span class="songs-singer-name">{{item.artists[0].name}}</span>
@@ -27,7 +27,7 @@
         <td class="songs-table-td4">
           <span class="songs-album-name">{{item.album.name}}</span>
         </td>
-        <td class="songs-table-td5">
+        <td class="songs-table-td5" v-if='item.bMusic'>
           <span class="songs-time-long">{{item.bMusic.playTime| timeLong}}</span>
         </td>
       </tr>
@@ -57,8 +57,8 @@
       playMusic(id) {
         this.$bus.$emit('playMusic', id)
       },
-      playMv(id){
-        this.$bus.$emit('playMv', id)
+      playMv(id,artId){
+        this.$bus.$emit('playMv', id,artId)
       }
     }
   }

@@ -33,7 +33,6 @@
     methods:{
       playMusic(id){
         playMusic(id).then(res=>{
-          console.log(res)
           this.musicSrc=res.data.data[0].url
         })
       },
@@ -42,10 +41,10 @@
       this.$bus.$on('playMusic',id=>{
         this.playMusic(id)
       })
-      this.$bus.$on('playMv',id=>{
+      this.$bus.$on('playMv',(id,artId)=>{
         this.$router.push({
           path:'/mv',
-          query:{'id':id}
+          query:{'id':id,'artId':artId}
         })
       })
       this.$bus.$on('goPlaylistDetail',id=>{
@@ -87,17 +86,17 @@
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 200px;
+    width: 7.8125vw;
     height: calc(100vh - 70px);
     border-right: 2px solid #d7dde4;
   }
 
   .view-main {
     position: relative;
-    top: 70px;
-    left: 200px;
-    width: calc(100vw - 200px);
-    height: calc(100vh - 110px);
+    top: 5.5118vh;
+    left: 7.8125vw;
+    width: calc(100vw - 7.8125vw);
+    height: calc(100vh - 70px);
     overflow: hidden;
   }
   .view-main::after{
@@ -108,7 +107,7 @@
     right: -20px;
     bottom: -20px;
     background-image: url(./assets/img/timg4.jpg);
-    background-size: cover;
+    background-size: 100vw 100vh;
     background-attachment: inherit;
     filter: blur(5px) contrast(1.1) saturate(1.4);
     z-index: -1;
@@ -129,5 +128,5 @@
     height: 40px;
     z-index:5;
   }
-
+  
 </style>

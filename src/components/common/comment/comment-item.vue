@@ -67,17 +67,9 @@
         return this.$moment(time).format('YYYY-MM-DD HH:mm:ss')
       },
       changePage(page){
-        console.log(page)
-        this.subParams.page=page
-        this.$bus.$emit('changePage',this.subParams)
-      }
-    },
-    watch:{
-      comments(){
-        console.log(this.comments)
+        this.$emit('changePage',page)
       }
     }
-
   }
 </script>
 
@@ -109,7 +101,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px 0;
+    padding: 15px 5px;
+    border:2px solid transparent;
+    border-radius:4px;
+    transition:.5s;
+    
   }
   .comment-item:nth-child(1){
     margin-top: -20px;
@@ -118,6 +114,7 @@
     width: 40px;
     height: 40px;
     border-radius:50%;
+    align-self: flex-start;
   }
   .comment-user-nickname,
   .comment-reply-nickname{
@@ -129,9 +126,9 @@
     padding: 5px 0;
   }
   .comment-item-reply{
-    border-radius:5px;
-    padding: 5px 0;
-    background-color: rgba(0,0,0,0.03);
+    border-radius:4px;
+    padding: 2px 0;
+    background-color: rgba(0,0,0,0.05);
   }
   .comment-review-text,
   .comment-reply-text{
@@ -144,5 +141,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .comment-item:hover {
+    border:2px solid  rgba(0,0,0,0.08);
   }
 </style>

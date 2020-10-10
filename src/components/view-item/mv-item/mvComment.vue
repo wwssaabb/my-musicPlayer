@@ -1,13 +1,13 @@
 <template>
-  <div class="playlist-comment-wrap">
-    <div class="playlist-hotcomment-wrap" v-if="hotCommentsTotal!==0">
-      <comment :title="hotCommentTitle" :comments="hotComments" />
+  <div class="mv-comment-wrap">
+    <div class="mv-hotcomment-wrap" v-if="hotcommentIsShow">
+      <comment :title="hotCommentTitle" :comments="comments.hotComments" />
     </div>
-    <div class="playlist-newcomment-wrap">
+    <div class="mv-newcomment-wrap">
       <comment :title="newCommentTitle"
-               :comments="newComments"
+               :comments="comments.comments"
                :page="true"
-               :total="newCommentsTotal"
+               :total="comments.total"
                :size="20"
                :subParams="subNewParams"
                @changePage="changePage"
@@ -19,23 +19,15 @@
 <script>
   import comment from '../../common/comment/comment-item'
   export default {
-    name: "playlistComment",
+    name: "mvComment",
     components:{
       comment
     },
     props:{
-      hotCommentsTotal:0,
-      newCommentsTotal:0,
-      hotComments:{
-        type:Array,
+      comments:{
+        type:Object,
         default(){
-          return []
-        }
-      },
-      newComments:{
-        type:Array,
-        default(){
-          return []
+          return {}
         }
       },
       subNewParams:{
@@ -45,13 +37,29 @@
         }
       }
     },
+    data() {
+      return {
+        hotComments:[],
+        newComments:[],
+
+      }
+    },
     computed:{
       hotCommentTitle(){
         return `热门评论(${this.hotCommentsTotal})`
       },
       newCommentTitle(){
         return `最新评论(${this.newCommentsTotal})`
-      }
+      },
+      hotCommentsTotal(){
+        return this.comments.hotComments.length
+      },
+      newCommentsTotal(){
+        return this.comments.total
+      },
+      hotcommentIsShow(){
+       return this.comments.hotComments===undefined?false:true
+        }
     },
     methods:{
       changePage(page){
@@ -62,7 +70,7 @@
 </script>
 
 <style scoped>
-  .playlist-comment-wrap{
+  .mv-comment-wrap{
     width: 100%;
     height: 100%;
     overflow: auto;

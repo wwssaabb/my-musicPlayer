@@ -26,6 +26,12 @@ Vue.prototype.$moment=moment
 //moment汉化
 moment.locale('zh-cn')
 
+//安装并使用图片懒加载插件
+import VueLazyload from "vue-lazyload";
+Vue.use(VueLazyload,{
+  loading:require("./assets/img/loading.gif")
+})
+
 Vue.config.productionTip = false
 
 

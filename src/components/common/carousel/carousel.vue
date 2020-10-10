@@ -1,8 +1,8 @@
 <template>
   <div class="carousel-wrap">
-    <el-carousel :interval="4000" type="card" height="262px">
+    <el-carousel :interval="3000" type="card" autoplay loop height="254px">
       <el-carousel-item v-for="item in banners" :key="item.acm">
-        <img class="image" :src="item.imageUrl" alt="">
+        <img class="image" :src="item.imageUrl" alt="item.typeTitle">
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -33,6 +33,6 @@
   .image{
     width: 100%;
     height: auto;
-    border-radius:15px ;
+    border-radius:20px ;
   }
 </style>

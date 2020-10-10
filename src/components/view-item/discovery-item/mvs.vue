@@ -6,7 +6,7 @@
     <div class="discovery-mvs-content">
       <div class="discovery-mvs-content-item" v-for="item in mvs" :key="item.id">
         <div class="discovery-image-compose">
-          <Icon type="md-arrow-dropright-circle" class="discovery-player-icon" size="40" color="#dc143c" @click="playMv(item.id)"/>
+          <Icon type="md-arrow-dropright-circle" class="discovery-player-icon" size="40" color="#dc143c" @click="playMv(item.id,item.artistId)"/>
           <div class="discovery-icon-compose">
             <Icon type="md-arrow-dropright" size="28" color="#fff" />
             <span class="discovery-play-count">{{item.playCount}}</span>
@@ -34,8 +34,8 @@
       }
     },
     methods:{
-      playMv(id){
-        this.$bus.$emit('playMv', id)
+      playMv(id,artId){
+        this.$bus.$emit('playMv', id,artId)
       }
     }
   }

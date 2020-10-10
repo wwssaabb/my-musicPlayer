@@ -19,7 +19,7 @@
         </td>
         <td class="playlist-table-td2">
           <span class="playlist-song-name">{{item.name}}</span>
-          <Icon class="playlist-mv-icon" v-if="item.mv!==0" type="logo-youtube" size="20" color="#c22727" @click="playMv(item.mv)"/>
+          <Icon class="playlist-mv-icon" v-if="item.mv!==0" type="logo-youtube" size="20" color="#c22727" @click="playMv(item.mv,item.ar[0].id)"/>
         </td>
         <td class="playlist-table-td3">
           <span class="playlist-singer-name">{{item.ar[0].name}}</span>
@@ -60,8 +60,8 @@
       playMusic(id) {
         this.$bus.$emit('playMusic', id)
       },
-      playMv(id){
-        this.$bus.$emit('playMv', id)
+      playMv(id,artId){
+        this.$bus.$emit('playMv', id,artId)
       }
     }
   }

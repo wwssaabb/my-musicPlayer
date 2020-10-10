@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import {getBannerData,getPersonalizedData,getnewSongData,getnewMvData} from '../../network/request-item/request-base.js'
+  import {getBannerData,getPersonalizedData,getNewSongData,getNewMvData} from '../../network/request-item/request-base.js'
   import carousel from '../components/common/carousel/carousel'
   import recommend from '../components/view-item/discovery-item/recommend'
   import newsong from '../components/view-item/discovery-item/newsong'
@@ -38,9 +38,9 @@
     //获取推荐歌单
     this.getPersonalizedData()
     //获取最新音乐
-    this.getnewSongData()
+    this.getNewSongData()
     //获取最新MV
-    this.getnewMvData()
+    this.getNewMvData()
 
   },
   methods:{
@@ -54,24 +54,24 @@
         this.songs=res.data.result
       })
     },
-    getnewSongData(){
-      getnewSongData().then(res=>{
+    getNewSongData(){
+      getNewSongData().then(res=>{
         this.newMusic=res.data.result
       })
     },
-    getnewMvData(){
-      getnewMvData().then(res=>{
+    getNewMvData(){
+      getNewMvData().then(res=>{
         this.mvs=res.data.result
       })
     }
   }
-};
+}
 </script>
 
 <style >
   .discovery-wrap{
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 110px);
     display: flex;
     justify-content: center;
     align-items: flex-start;

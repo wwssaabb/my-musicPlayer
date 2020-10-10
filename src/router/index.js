@@ -17,7 +17,7 @@ Vue.use(VueRouter)
 const routes=[
   {
     path:'',
-    redirect: discovery
+    redirect: '/discovery'
   },
   {
     //发现音乐

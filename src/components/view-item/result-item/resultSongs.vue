@@ -15,7 +15,7 @@
           </td>
           <td class="result-songs-table-td2">
             <span class="result-songs-song-name" @click="playMusic(item.id)">{{item.name}}</span>
-            <Icon class="result-songs-mv-icon" type="logo-youtube" size="20" color="#c22727" v-if="item.mvid!==0" @click="playMv(item.mvid)"/>
+            <Icon class="result-songs-mv-icon" type="logo-youtube" size="20" color="#c22727" v-if="item.mvid!==0" @click="playMv(item.mvid,item.artists[0].id)"/>
           </td>
           <td class="result-songs-table-td3">
             <span class="result-songs-singer-name">{{item.artists[0].name}}</span>
@@ -48,8 +48,8 @@
       playMusic(id){
         this.$bus.$emit('playMusic',id)
       },
-      playMv(id){
-        this.$bus.$emit('playMv', id)
+      playMv(id,artId){
+        this.$bus.$emit('playMv', id,artId)
       }
     },
     filters: {

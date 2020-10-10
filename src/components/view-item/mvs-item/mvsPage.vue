@@ -1,7 +1,7 @@
 <template>
   <page :current="obj.page"
         :total="total"
-        :page-size="15"
+        :page-size="24"
         :show-total="true"
         :show-elevator="true"
         @on-change="changePage"

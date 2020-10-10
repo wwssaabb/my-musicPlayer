@@ -18,14 +18,14 @@ export function getPersonalizedData(){
 }
 
 //请求最新音乐
-export function getnewSongData(){
+export function getNewSongData(){
   return request({
     url:'/personalized/newsong'
   })
 }
 
 //请求最新MV
-export function getnewMvData(){
+export function getNewMvData(){
   return request({
     url:'/personalized/mv'
   })
@@ -75,7 +75,7 @@ export function playMusic(id) {
 }
 
 //请求最新音乐列表
-export function getNewMvsData(area,type,order,page=1,limit=16) {
+export function getNewMvsData(area,type,order,page=1,limit=24) {
   return request({
     url: '/mv/all',
     params: {

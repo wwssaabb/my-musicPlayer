@@ -37,7 +37,6 @@
     },
     methods:{
       getData(obj){
-        console.log(typeof obj ==='object')
         if (typeof obj ==='object'){
           this.$emit('changeLabel',obj)
         }else{

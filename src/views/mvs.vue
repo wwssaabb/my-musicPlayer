@@ -39,7 +39,6 @@ export default {
   methods: {
     getNewMvsData(area,type,order,page){
       getNewMvsData(area,type,order,page).then(res=>{
-        console.log(res)
         if (res){
           if (res.data.count){
             this.total=res.data.count
@@ -81,12 +80,13 @@ export default {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    overflow: auto;
+    overflow: hidden;
   }
   .mvs-main{
     width: 70%;
     height: auto;
-    background-color: rgba(245, 247, 249, .75);
+    background-color: rgba(245,247,249,.75);
+    overflow: auto;
   }
   .mvs-label-wrap{
     width: 100%;
@@ -94,21 +94,26 @@ export default {
     border: 2px solid #e8eaec;
   }
   .mvs-label-area,
-  .mvs-label-area,
-  .mvs-label-area{
+  .mvs-label-type,
+  .mvs-label-order{
     width: 100%;
-    height: auto;
+    height: 54px;
   }
   .mvs-container{
     width: 100%;
-    height: auto;
+    height: 100px;
+    overflow: auto;
   }
   .mvs-page{
-    width: 100%;
+    position:fixed;
+    bottom: 40px;
+    width: calc((100vw - 7.8125vw)*0.7);
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: black;
+    z-index: 3;
+    background-color: rgb(237, 237, 237);
   }
 </style>

@@ -2,7 +2,7 @@
   <div class="image-show-wrap">
     <div class="image-show-item" @click="goPlaylistDetail(item.id)" v-for="item in showList" :key="item.id">
       <span class="image-show-commentCount">播放量:{{item.playCount | count}}</span>
-      <img class="image-show-img" :src="item.coverImgUrl" alt="">
+      <img class="image-show-img" v-lazy="item.coverImgUrl" alt="">
       <Icon class="image-show-icon" type="md-arrow-dropright-circle" size="40" color="#c22727"/>
       <span class="image-show-name">{{item.name}}</span>
     </div>
@@ -28,7 +28,7 @@
     filters:{
       count:function(num){
         return num>10000?parseInt(num/10000)+'万':num
-  }
+      }
     }
   }
 </script>

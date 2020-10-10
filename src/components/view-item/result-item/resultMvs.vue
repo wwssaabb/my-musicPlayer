@@ -3,7 +3,7 @@
     <div class="result-mv-main">
       <div class="result-mv-content-item" v-for="item in mvs" :key="item.id">
         <div class="result-mv-image-compose">
-          <Icon type="md-arrow-dropright-circle" class="result-mv-player-icon" size="40" color="#dc143c"/>
+          <Icon type="md-arrow-dropright-circle" class="result-mv-player-icon" @click="playMv(item.id,item.artistId)" size="40" color="#dc143c"/>
           <div class="result-mv-icon-compose">
             <Icon type="md-arrow-dropright" size="28" color="#fff"/>
             <span class="result-mv-play-count">{{item.playCount}}</span>
@@ -28,6 +28,11 @@
         default() {
           return []
         }
+      }
+    },
+    methods:{
+      playMv(id,artId){
+        this.$bus.$emit('playMv', id,artId)
       }
     }
   }

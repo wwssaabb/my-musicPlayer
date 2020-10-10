@@ -62,17 +62,8 @@
         let cat = this.nowLabel.cat
         let page = this.nowLabel.page
         //重新请求精品歌单和歌单列表，未判断重复请求
-        /*if (){*/
         this.getBoutiqueData(cat)
         this.getPlayListData(cat, page)
-        /*}*/
-
-        //获取label的对象
-      },
-      labelList: {
-        handler() {
-        },
-        deep: true
       }
     },
     methods: {

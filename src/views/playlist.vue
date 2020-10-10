@@ -34,7 +34,6 @@
   },
   data() {
     return {
-      playlistID:0,
       detailData: {},
       isChoose:'songsList',
       songsList:[],
@@ -42,15 +41,13 @@
       newComments:[],
       hotCommentsTotal:0,
       newCommentsTotal:0,
-      /*subHotParams:{'id':this.playlistID,'page':1},*/
-      subNewParams:{'id':this.playlistID,'page':1}
+      subNewParams:{'id':'','page':1}
     }
   },
   methods: {
     //获取歌单信息
     getPlaylistDetailData(id){
       getPlaylistDetailData(id).then(res=>{
-        console.log(res)
         this.detailData=res.data.playlist
         this.songsList=res.data.playlist.tracks
       })
@@ -58,7 +55,6 @@
     //暂时只展示top10评论
     getHotCommentsData(id,type=2){
       getHotCommentsData(id,type).then(res=>{
-        console.log(res)
         this.hotCommentsTotal=res.data.total
         this.hotComments=res.data.hotComments
       })
@@ -66,7 +62,6 @@
     //获取最新评论
     getNewCommentsData(id,page){
       getNewCommentsData(id,page).then(res=>{
-        console.log(res)
         this.newCommentsTotal=res.data.total
         this.newComments=res.data.comments
       })
@@ -74,19 +69,14 @@
     changeLabel(newLabel){
       this.isChoose=newLabel==='歌曲列表'?'songsList':"comments"
     },
-    changePage(obj){
-      this.subNewParams.page=obj.page
+    changePage(page){
+      this.subNewParams.page=page
     }
-
-
   },
   watch:{
     $route(){
-      console.log(this.$route.query.id)
-      this.playlistID=this.$route.query.id
       if (this.$route.path==='/playlist'){
-        this.getPlaylistDetailData(this.playlistID)
-        /*this.getHotCommentsData(this.subHotParams.id)*/
+        this.getPlaylistDetailData(this.$route.query.id)
         this.getNewCommentsData(this.subNewParams.id,this.subNewParams.page)
       }
     },
@@ -98,11 +88,12 @@
     }
   },
   created() {
-    console.log(this.$route.query.id)
     //请求初始的歌单详细数据
     this.getPlaylistDetailData(this.$route.query.id)
     this.getHotCommentsData(this.$route.query.id)
     this.getNewCommentsData(this.$route.query.id,1)
+    this.subNewParams.id=this.$route.query.id
+    this.subNewParams.page=1
   },
   computed:{
     commentsTotal(){
