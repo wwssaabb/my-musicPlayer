@@ -1,4 +1,4 @@
-项目展示连接：[进入]（http://www.longxin.store/my-musicPlayer/）
+项目展示连接：see [进入](http://www.longxin.store/my-musicPlayer/)
 
 # hmplayer
 
